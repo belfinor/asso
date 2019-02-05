@@ -8,7 +8,8 @@ import (
 	"database/sql"
 
 	"github.com/belfinor/Helium/log"
-	"github.com/belfinor/morphs/config"
+	"github.com/belfinor/asso/config"
+
 	_ "github.com/lib/pq"
 )
 
