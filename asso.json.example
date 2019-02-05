@@ -1,0 +1,22 @@
+{
+    "daemon": {
+        "pid": "asso.pid",
+        "dir": "."
+    },
+    "server": {
+        "server": "127.0.0.1",
+        "port": 2815,
+        "url": "/site/rpc"
+    },
+    "database": {
+      "driver": "postgres",
+      "connect": "user=********* password=*******s host=127.0.0.1 port=5432 dbname=****** sslmode=disable"
+    },
+    "gc": 10,
+    "log": {
+        "template": "morphs-%Y%m%d.log",
+        "period":   86400,
+        "save":     7,
+        "level":    "trace"
+    }
+}
