@@ -26,9 +26,9 @@ type Game struct {
 }
 
 type Record struct {
-	Word  string
-	Asso  string
-	Image string
+	Word  string `json:"word"`
+	Asso  string `json:"asso"`
+	Image string `json:"image"`
 }
 
 func NextId() string {
