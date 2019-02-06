@@ -14,6 +14,44 @@ import (
 )
 
 var acache *lcache.Cache = lcache.New(&lcache.Config{TTL: 86400 * 7, Size: 10240, Nodes: 16})
+var wstream chan string = make(chan string, 10)
+
+func Word() string {
+	return <-wstream
+}
+
+func Init() {
+
+	go func() {
+		for _, w := range getWords() {
+			wstream <- w
+		}
+	}()
+}
+
+func getWords() []string {
+	dbh, err := db.Open()
+	if err != nil {
+		return nil
+	}
+	defer dbh.Close()
+
+	rows, err := dbh.Query("SELECT name FROM words ORDER BY RANDOM(10000) LIMIT 10")
+	if err != nil {
+		return nil
+	}
+
+	res := make([]string, 0, 10)
+	str := ""
+
+	for rows.Next() {
+
+		rows.Scan(&str)
+		res = append(res, str)
+	}
+
+	return res
+}
 
 func Add(from, to string) {
 

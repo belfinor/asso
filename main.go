@@ -9,6 +9,7 @@ import (
 
 	"github.com/belfinor/Helium/daemon"
 	"github.com/belfinor/Helium/log"
+	"github.com/belfinor/asso/asso"
 	"github.com/belfinor/asso/config"
 )
 
@@ -35,4 +36,5 @@ func main() {
 		log.Info("start application")
 	}
 
+	asso.Init()
 }

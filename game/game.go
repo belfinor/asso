@@ -14,9 +14,8 @@ import (
 	ass "github.com/belfinor/asso/asso"
 	"github.com/belfinor/asso/avatars"
 	"github.com/belfinor/asso/game/cache"
+	"github.com/belfinor/asso/text"
 	"github.com/belfinor/asso/uniq"
-	"github.com/belfinor/irbis/asso/phrase"
-	"github.com/belfinor/irbis/text"
 	"github.com/belfinor/sociation"
 )
 
@@ -41,7 +40,7 @@ func New(wrd string) *Game {
 	}
 
 	if wrd == "" {
-		g.Word = phrase.Get()
+		g.Word = ass.Word()
 	} else {
 		g.Word = wrd
 	}
@@ -102,7 +101,7 @@ func (g *Game) ComputerStep(word string) *Record {
 
 	for _, v := range nwords {
 
-		w := text.PreparePhrase(v)
+		w := text.Prepare(v)
 
 		if !g.Used(w) {
 
