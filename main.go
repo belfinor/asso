@@ -1,8 +1,8 @@
 package main
 
 // @author  Mikhail Kirillov <mikkirillov@yandex.ru>
-// @version 1.000
-// @date    2019-02-05
+// @version 1.001
+// @date    2019-02-06
 
 import (
 	"flag"
@@ -16,7 +16,7 @@ func main() {
 	conf := ""
 	is_daemon := false
 
-	flag.StringVar(&conf, "c", "asso.json", "config file name")
+	flag.StringVar(&conf, "c", "/etc/asso.json", "config file name")
 	flag.BoolVar(&is_daemon, "d", false, "run as daemon")
 
 	flag.Parse()

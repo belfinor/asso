@@ -1,8 +1,8 @@
 package config
 
 // @author  Mikhail Kirillov <mikkirillov@yandex.ru>
-// @version 1.000
-// @date    2019-02-05
+// @version 1.001
+// @date    2019-02-06
 
 import (
 	"encoding/json"
@@ -15,6 +15,10 @@ import (
 )
 
 type Config struct {
+	Avatars struct {
+		Path   string `json:"path"`
+		Prefix string `json:"prefix"`
+	} `json:"avatars"`
 	Daemon   daemon.Config `json:"daemon"`
 	Database struct {
 		Driver  string `json:"driver"`

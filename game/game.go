@@ -1,7 +1,7 @@
 package game
 
 // @author  Mikhail Kirillov <mikkirillov@yandex.ru>
-// @version 1.000
+// @version 1.001
 // @date    2019-02-06
 
 import (
@@ -12,10 +12,10 @@ import (
 	"github.com/belfinor/Helium/slice"
 	"github.com/belfinor/asso/asso"
 	ass "github.com/belfinor/asso/asso"
+	"github.com/belfinor/asso/avatars"
 	"github.com/belfinor/asso/game/cache"
 	"github.com/belfinor/asso/uniq"
 	"github.com/belfinor/irbis/asso/phrase"
-	"github.com/belfinor/irbis/avatars"
 	"github.com/belfinor/irbis/text"
 	"github.com/belfinor/sociation"
 )

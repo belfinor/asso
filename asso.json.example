@@ -1,4 +1,8 @@
 {
+    "avatars": {
+      "path": "avatars",
+      "prefix": "http://127.0.0.1/avatars"
+    },
     "daemon": {
         "pid": "asso.pid",
         "dir": "."
