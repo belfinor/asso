@@ -45,8 +45,11 @@ func main() {
 
 	if isCon {
 		consoleHandler()
+		log.Finish("finish")
 		return
 	}
+
+	log.Finish("finish")
 }
 
 func consoleHandler() {
