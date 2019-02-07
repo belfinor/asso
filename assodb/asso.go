@@ -1,4 +1,4 @@
-package asso
+package assodb
 
 // @author  Mikhail Kirillov <mikkirillov@yandex.ru>
 // @version 1.000

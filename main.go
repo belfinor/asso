@@ -11,7 +11,7 @@ import (
 
 	"github.com/belfinor/Helium/daemon"
 	"github.com/belfinor/Helium/log"
-	"github.com/belfinor/asso/asso"
+	"github.com/belfinor/asso/assodb"
 	"github.com/belfinor/asso/config"
 	"github.com/belfinor/asso/text"
 )
@@ -41,7 +41,7 @@ func main() {
 		log.Info("start application")
 	}
 
-	asso.Init()
+	assodb.Init()
 
 	if isCon {
 		consoleHandler()
@@ -53,7 +53,7 @@ func consoleHandler() {
 
 	br := bufio.NewReader(os.Stdin)
 
-	start := asso.Word()
+	start := assodb.Word()
 
 	for {
 
@@ -67,7 +67,7 @@ func consoleHandler() {
 			continue
 		}
 
-		asso.Add(start, str)
+		assodb.Add(start, str)
 
 		start = str
 	}
