@@ -1,8 +1,8 @@
 package assodb
 
 // @author  Mikhail Kirillov <mikkirillov@yandex.ru>
-// @version 1.000
-// @date    2019-02-06
+// @version 1.001
+// @date    2019-02-07
 
 import (
 	"context"
@@ -36,8 +36,9 @@ func getWords() []string {
 	}
 	defer dbh.Close()
 
-	rows, err := dbh.Query("SELECT name FROM words ORDER BY RANDOM(10000) LIMIT 10")
+	rows, err := dbh.Query("SELECT name FROM words ORDER BY RANDOM() LIMIT 10")
 	if err != nil {
+		log.Error(err)
 		return nil
 	}
 
@@ -77,6 +78,7 @@ func Add(from, to string) {
 	if err == sql.ErrNoRows {
 
 	} else if err != nil {
+		log.Error(e)
 		return
 	}
 
@@ -100,8 +102,9 @@ func Asso(name string) []string {
 		}
 		defer dbh.Close()
 
-		rows, e := dbh.Query("SELECT asso.asso FROM asso WHERE name = $1 ORDER BY RANDOM(1000) LIMIT 100", name)
+		rows, e := dbh.Query("SELECT asso FROM asso WHERE name = $1 ORDER BY RANDOM(1000) LIMIT 100", name)
 		if e != nil {
+			log.Error(e)
 			return []string{}
 		}
 

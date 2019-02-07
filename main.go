@@ -7,6 +7,7 @@ package main
 import (
 	"bufio"
 	"flag"
+	"fmt"
 	"os"
 
 	"github.com/belfinor/Helium/daemon"
@@ -57,6 +58,8 @@ func consoleHandler() {
 	br := bufio.NewReader(os.Stdin)
 
 	start := assodb.Word()
+
+	fmt.Println("start word: " + start)
 
 	for {
 
