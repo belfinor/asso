@@ -16,6 +16,7 @@ import (
 	"github.com/belfinor/Helium/net/http/router"
 	"github.com/belfinor/Helium/net/jsonrpc2"
 	"github.com/belfinor/asso/assodb"
+	"github.com/belfinor/asso/avatars"
 	"github.com/belfinor/asso/config"
 	"github.com/belfinor/asso/text"
 
@@ -54,6 +55,8 @@ func main() {
 		log.Finish("finish")
 		return
 	}
+
+	avatars.Load()
 
 	// start server
 	router.Register("POST", cfg.Server.Url, func(rw http.ResponseWriter, req *http.Request, p router.Params) {
