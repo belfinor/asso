@@ -1,8 +1,8 @@
 package assodb
 
 // @author  Mikhail Kirillov <mikkirillov@yandex.ru>
-// @version 1.001
-// @date    2019-02-07
+// @version 1.002
+// @date    2019-02-08
 
 import (
 	"context"
@@ -102,7 +102,7 @@ func Asso(name string) []string {
 		}
 		defer dbh.Close()
 
-		rows, e := dbh.Query("SELECT asso FROM asso WHERE name = $1 ORDER BY RANDOM(1000) LIMIT 100", name)
+		rows, e := dbh.Query("SELECT asso FROM asso WHERE name = $1 ORDER BY RANDOM() LIMIT 100", name)
 		if e != nil {
 			log.Error(e)
 			return []string{}
