@@ -1,8 +1,8 @@
 package game
 
 // @author  Mikhail Kirillov <mikkirillov@yandex.ru>
-// @version 1.002
-// @date    2019-02-07
+// @version 1.003
+// @date    2019-02-08
 
 import (
 	"context"
@@ -10,12 +10,12 @@ import (
 
 	"github.com/belfinor/Helium/log"
 	"github.com/belfinor/Helium/slice"
+	"github.com/belfinor/asso/assodb"
 	ass "github.com/belfinor/asso/assodb"
 	"github.com/belfinor/asso/avatars"
 	"github.com/belfinor/asso/game/cache"
 	"github.com/belfinor/asso/text"
 	"github.com/belfinor/asso/uniq"
-	"github.com/belfinor/irbis/asso"
 	"github.com/belfinor/sociation"
 )
 
@@ -67,7 +67,7 @@ func (g *Game) UserStep(word string, a string) bool {
 
 	g.Use(a)
 
-	asso.Add(word, a)
+	assodb.Add(word, a)
 
 	return true
 }
