@@ -1,34 +1,43 @@
 package avatars
 
 // @author  Mikhail Kirillov <mikkirillov@yandex.ru>
-// @version 1.000
-// @date    2019-02-06
+// @version 1.001
+// @date    2019-02-09
 
 import (
-	"errors"
 	"io/ioutil"
 	"strings"
-	"time"
 
 	"github.com/belfinor/Helium/log"
 	"github.com/belfinor/Helium/rand/mersenne"
 	"github.com/belfinor/asso/config"
+	"github.com/belfinor/lcache"
 )
 
 var data []string = []string{}
+var stream chan string = make(chan string, 20)
+var atom *lcache.Atom = lcache.NewAtom(600)
 
-func init() {
-	go reload()
+func Init() {
+
+	go func() {
+
+		for {
+
+			atom.Fetch(func() interface{} {
+				load()
+				return true
+			})
+
+			index := int(mersenne.Next() % int64(Size()))
+			stream <- config.Get().Avatars.Prefix + "/" + data[index]
+
+		}
+
+	}()
 }
 
-func reload() {
-	for {
-		<-time.After(time.Minute * 10)
-		Load()
-	}
-}
-
-func Load() {
+func load() {
 
 	cfg := config.Get()
 
@@ -67,30 +76,13 @@ func Load() {
 
 	data = res
 
-	log.Info("avatars loaded")
+	log.Info("avatars reloaded")
 }
 
 func Size() int {
-
 	return len(data)
 }
 
-func Get(index int) (string, error) {
-
-	if index < 0 || index >= Size() {
-		return "", errors.New("invalid index")
-	}
-
-	return config.Get().Avatars.Prefix + "/" + data[index], nil
-}
-
-func Random() (string, error) {
-
-	if Size() < 1 {
-		return "", errors.New("no data")
-	}
-
-	index := int(mersenne.Next() % int64(len(data)))
-
-	return Get(index)
+func Get() string {
+	return <-stream
 }

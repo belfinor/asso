@@ -1,8 +1,8 @@
 package main
 
 // @author  Mikhail Kirillov <mikkirillov@yandex.ru>
-// @version 1.003
-// @date    2019-02-08
+// @version 1.004
+// @date    2019-02-09
 
 import (
 	"bufio"
@@ -56,7 +56,7 @@ func main() {
 		return
 	}
 
-	avatars.Load()
+	avatars.Init()
 
 	// start server
 	router.Register("POST", cfg.Server.Url, func(rw http.ResponseWriter, req *http.Request, p router.Params) {

@@ -1,8 +1,8 @@
 package api
 
 // @author  Mikhail Kirillov <mikkirillov@yandex.ru>
-// @version 1.000
-// @date    2019-02-08
+// @version 1.001
+// @date    2019-02-09
 
 import (
 	"github.com/belfinor/Helium/net/jsonrpc2"
@@ -50,7 +50,7 @@ func Game(req GameData) (*GameResponse, *jsonrpc2.Error) {
 		gr.Victory = true
 	} else {
 		gr.Word = rec.Asso
-		gr.Image, _ = avatars.Random()
+		gr.Image = avatars.Get()
 	}
 
 	return gr, nil
@@ -73,7 +73,7 @@ func NeedHelp(req GameData) (*GameResponse, *jsonrpc2.Error) {
 		gr.Victory = true
 	} else {
 		gr.Word = rec.Asso
-		gr.Image, _ = avatars.Random()
+		gr.Image = avatars.Get()
 	}
 
 	return gr, nil

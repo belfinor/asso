@@ -1,8 +1,8 @@
 begin;
 
 -- @author  Mikhail Kirillov <mikkirillov@yandex.ru>
--- @version 1.001
--- @date    2019-02-06
+-- @version 1.002
+-- @date    2019-02-09
 
 create table asso (
   id bigserial not null primary key,
@@ -36,7 +36,8 @@ comment on column words.id is 'id слова';
 comment on column words.name is 'слово';
 comment on column words.created is 'время создания';
 
-insert into words(name) values ('город'),('еда'),('животное'),('игра'),('книга'),
-  ('машина'),('музыка'),('наука'),('писатель'),('предмет'),('россия'),('страна'),('фильм'),('школа');
+insert into words(name) values ('гаджет'),('город'),('еда'),('животное'),('игра'),('имя'),('книга'),('компьютер'),
+  ('лекарство'),('машина'),('музыка'),('наука'),('одежда'),('писатель'),('политик'),('предмет'),('птица'),('россия'),
+  ('страна'),('ученый'),('фильм'),('школа');
 
 end;

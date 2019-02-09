@@ -1,8 +1,8 @@
 package game
 
 // @author  Mikhail Kirillov <mikkirillov@yandex.ru>
-// @version 1.003
-// @date    2019-02-08
+// @version 1.004
+// @date    2019-02-09
 
 import (
 	"context"
@@ -84,7 +84,7 @@ func (g *Game) ComputerStep(word string) *Record {
 				Asso: v,
 			}
 
-			res.Image, _ = avatars.Random()
+			res.Image = avatars.Get()
 			return res
 		}
 	}
@@ -112,7 +112,7 @@ func (g *Game) ComputerStep(word string) *Record {
 				Asso: w,
 			}
 
-			r.Image, _ = avatars.Random()
+			r.Image = avatars.Get()
 
 			g.assoLog(word, w)
 
