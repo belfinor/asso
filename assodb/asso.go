@@ -1,8 +1,8 @@
 package assodb
 
 // @author  Mikhail Kirillov <mikkirillov@yandex.ru>
-// @version 1.002
-// @date    2019-02-08
+// @version 1.003
+// @date    2019-02-09
 
 import (
 	"context"
@@ -23,8 +23,10 @@ func Word() string {
 func Init() {
 
 	go func() {
-		for _, w := range getWords() {
-			wstream <- w
+		for {
+			for _, w := range getWords() {
+				wstream <- w
+			}
 		}
 	}()
 }
