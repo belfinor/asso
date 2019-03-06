@@ -1,8 +1,8 @@
 package assodb
 
 // @author  Mikhail Kirillov <mikkirillov@yandex.ru>
-// @version 1.003
-// @date    2019-02-09
+// @version 1.004
+// @date    2019-03-06
 
 import (
 	"context"
@@ -135,4 +135,36 @@ func Delete(from, to string) {
 	dbh.Exec("DELETE FROM asso WHERE name = $1 AND asso = $2", from, to)
 
 	acache.Delete(from)
+}
+
+func DeleteFromAsso(wrd string) {
+	dbh, err := db.Open()
+	if err != nil {
+		return
+	}
+	defer dbh.Close()
+
+	dbh.Exec("DELETE FROM asso WHERE name = $1 OR asso = $1", wrd)
+
+	acache.Delete(wrd)
+}
+
+func AddWord(wrd string) {
+	dbh, err := db.Open()
+	if err != nil {
+		return
+	}
+	defer dbh.Close()
+
+	row := dbh.QueryRow("SELECT COUNT(id) FROM words WHERE name = $1", wrd)
+
+	var id int
+
+	if err = row.Scan(&id); err != nil {
+		return
+	}
+
+	if id == 0 {
+		dbh.Exec("INSERT INTO words(name) VALUES ($1)", wrd)
+	}
 }

@@ -1,8 +1,8 @@
 package main
 
 // @author  Mikhail Kirillov <mikkirillov@yandex.ru>
-// @version 1.004
-// @date    2019-02-09
+// @version 1.005
+// @date    2019-03-06
 
 import (
 	"bufio"
@@ -21,6 +21,8 @@ import (
 	"github.com/belfinor/asso/text"
 
 	_ "github.com/belfinor/asso/api"
+
+	_ "github.com/belfinor/asso/controller"
 )
 
 func main() {
