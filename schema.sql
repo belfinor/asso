@@ -1,8 +1,8 @@
 begin;
 
 -- @author  Mikhail Kirillov <mikkirillov@yandex.ru>
--- @version 1.002
--- @date    2019-02-09
+-- @version 1.003
+-- @date    2019-03-06
 
 create table asso (
   id bigserial not null primary key,
@@ -13,6 +13,8 @@ create table asso (
   checked bool not null default false,
   unique(name,asso)
 );
+
+CREATE INDEX asso_asso_idx ON asso(asso);
 
 comment on table asso is 'таблица с ассоциациями';
 
