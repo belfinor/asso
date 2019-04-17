@@ -1,17 +1,17 @@
 package avatars
 
 // @author  Mikhail Kirillov <mikkirillov@yandex.ru>
-// @version 1.001
-// @date    2019-02-09
+// @version 1.002
+// @date    2019-04-17
 
 import (
 	"io/ioutil"
 	"strings"
 
 	"github.com/belfinor/Helium/log"
-	"github.com/belfinor/Helium/rand/mersenne"
 	"github.com/belfinor/asso/config"
 	"github.com/belfinor/lcache"
+	"github.com/belfinor/lrand"
 )
 
 var data []string = []string{}
@@ -29,7 +29,7 @@ func Init() {
 				return true
 			})
 
-			index := int(mersenne.Next() % int64(Size()))
+			index := int(lrand.Next() % int64(Size()))
 			stream <- config.Get().Avatars.Prefix + "/" + data[index]
 
 		}
